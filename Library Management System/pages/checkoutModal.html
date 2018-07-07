@@ -1,0 +1,35 @@
+<div class="checkoutModal">
+    <div class="modal-header">
+        <h3 class="modal-title">Check-out a book</h3>
+    </div>
+    <div class="modal-body">
+        <table class="table table-bordered">
+            <tr>
+                <th>ISBN</th>
+                <td>{{book.ISBN}}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{book.Title}}</td>
+            </tr>
+            <tr>
+                <th>Author(s)</th>
+                <td>{{book.Name}}</td>
+            </tr>
+        </table>
+        <div class="input-group">
+            <span class="input-group-addon">Enter the Card ID of the borrower to check out:</span>
+            <input ng-keydown="$event.keyCode === 13 && checkout(card_id)" type="text" class="form-control" ng-model="card_id" name="card_id" placeholder="Card ID">
+        </div>
+        <div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="messages">
+            <span class="text-danger" ng-if="error">{{error}}</span>
+            <span class="text-success" ng-if="success">{{success}}</span>
+        </div>
+        <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-info" ng-click="checkout(card_id)">Check-out</button>
+    </div>
+</div>

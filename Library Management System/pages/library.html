@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Library Management System</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-left" id="navbar">
+            <ul class="nav navbar-nav">
+                <li ui-sref-active="active"><a ui-sref="library.books">Books</a></li>
+                <li ui-sref-active="active"><a ui-sref="library.borrowers">Borrowers</a></li>
+                <li ui-sref-active="active"><a ui-sref="library.checkIn">Check-ins</a></li>
+                <li ui-sref-active="active"><a ui-sref="library.fineManagement">Fine Management</a></li>
+            </ul>
+        </div>
+        <span class="nav navbar-nav navbar-right">
+            <a tooltip-placement="left" uib-tooltip="Refresh Fine Information" href="#" class="btn btn-info btn-lg" ng-click="refreshFines()"><i class="glyphicon glyphicon-refresh"></i></a>
+        </span>
+    </div>
+</nav>
+<ui-view></ui-view>

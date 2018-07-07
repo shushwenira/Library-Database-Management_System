@@ -1,0 +1,51 @@
+<div class="fines container-fluid">
+    <div class="row search-bar" ng-class="{top:searched,middle:!searched}">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="input-group search-group">
+                <input type="text" class="form-control search-input" ng-keydown="$event.keyCode === 13 && search(searchString)" ng-model="searchString" placeholder="Search for a borrower's fine information by card id">
+                <span class="input-group-btn">
+        		<button class="btn btn-info search-btn" ng-click="search(searchString)" type="button">Search</button>
+      		</span>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <div class="row text-center fine-choice">
+        <label class="radio-inline">
+            Include already paid fines?
+        </label>
+        <label class="radio-inline">
+            <input type="radio" ng-model="includePaidFines.value" ng-value="1" ng-change="search()"> Yes
+        </label>
+        <label class="radio-inline">
+            <input type="radio" ng-model="includePaidFines.value" ng-value="0" ng-change="search()"> No
+        </label>
+    </div>
+    <div class="row search-table text-center" ng-show="fines.length > 0">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <table class="table table-bordered table-striped ">
+                <thead>
+                    <tr>
+                        <th>Card ID</th>
+                        <th>Total Fine ($)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="fine in finesPerPage track by $index">
+                        <td><a class="anchors" ng-click="showFines(fine.Card_id)">{{fine.Card_id}}</a></td>
+                        <td>{{fine.Total_fine}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pages">
+                <ul uib-pagination total-items="totalItems" max-size="5" ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="no-results" ng-show="fines.length == 0 && searched">
+        <h4>No Results Found</h4>
+    </div>
+</div>

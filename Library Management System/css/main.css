@@ -1,0 +1,129 @@
+:focus{
+	outline: none;
+}
+
+a:hover, a, a:active, a:focus{
+	text-decoration: none;
+	outline: none;
+}
+
+.navbar-right .btn-lg{
+	padding: 12px 16px;
+	border-radius: 0;
+}
+
+.btn-info:focus{
+	border-color: #31b0d5;
+}
+
+.glyphicon-refresh{
+	top: 3px;
+}
+
+.checkin th, .fines th, .finesModal th {
+	text-align: center;
+}
+
+.fines .fine-choice{
+	margin-top: 8vh;
+}
+
+.small-width{
+	width: 23%;
+	margin: 0 3px;
+}
+
+.anchors{
+	cursor: pointer;
+}
+
+.messages{
+	float: left;
+}
+
+.refreshFinesModal .modal-body, .refreshFinesModal .modal-footer{
+	text-align: center;
+}
+
+.search-input{
+	font-size: 18px;
+}
+
+
+.search-bar.middle{
+	margin-top: 35vh;
+}
+
+.search-bar.top, .add-bar{
+	margin-top: 8vh;
+}
+
+.search-table, .borrower-table{
+	margin-top: 8vh;
+}
+
+.no-results{
+	margin-top: 20vh;
+	text-align: center;
+}
+
+.pages{
+	width: 100%;
+	text-align: center;
+}
+
+.modal-dialog {
+  margin: 0;
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%)!important;
+}
+
+.modal-header{
+	text-align: center;
+}
+
+
+.finesModal .modal-dialog{
+	width: 650px;
+}
+
+.finesModal .modal-body{
+	max-height: 350px;
+	overflow-y: auto;
+}
+
+.borrowers .add-borrower{
+	margin-top: 4px;
+    width: 100%;
+}
+
+.pagination>.active>a, 
+.pagination>.active>a:focus, 
+.pagination>.active>a:hover, 
+.pagination>.active>span, 
+.pagination>.active>span:focus, 
+.pagination>.active>span:hover {
+	background-color: #5bc0de;
+    border-color: #5bc0de;
+}
+
+.pagination{
+	margin: 0 0 10px 0;
+}
+
+.block-ui-message{
+	color: black;
+	padding: 0;
+	background-color: #fff;
+	opacity: 0.7;
+}
+
+.block-ui-overlay{
+	opacity: 0.7;
+}
+
+.checkIn-btn{
+	margin: 20px 0;
+}

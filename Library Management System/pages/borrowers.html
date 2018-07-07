@@ -1,0 +1,99 @@
+<div class="borrowers container-fluid">
+    <div class="row add-bar" ">
+        <div class="col-sm-4 "></div>
+        <div class="col-sm-4 ">
+            <uib-accordion>
+                <div uib-accordion-group class="panel-info" is-open="status.open ">
+					<uib-accordion-heading>
+    					Add Borrowers
+    					<i class="pull-right glyphicon " ng-class="{ 'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open} "></i>
+					</uib-accordion-heading>
+					<form name="borrowerForm" class="row ">
+						<div class="col-sm-6 ">
+							<div class="form-group ">
+        						<label>First Name:</label>
+        						<input type="text "  class="form-control " ng-model="addBorrower.firstName ">
+    						</div>
+    						<div class="form-group ">
+        						<label>SSN</label>
+        						<div>
+        							<input class="small-width" type="text" pattern="^\d{3,3}" title="Must contain 3 digits only" ng-model="addBorrower.ssn1 "> - 
+        							<input class="small-width" type="text" pattern="^\d{2,2}" title="Must contain 2 digits only" ng-model="addBorrower.ssn2 "> -
+        							<input class="small-width" type="text" pattern="^\d{4,4}" title="Must contain 4 digits only" ng-model="addBorrower.ssn3 ">
+        						</div>
+    						</div>
+    						<div class="form-group ">
+        						<label>Street Address</label>
+        						<input type="text " class="form-control " ng-model="addBorrower.street ">
+    						</div>
+    						<div class="form-group ">
+        						<label>State</label>
+        						<select class="form-control " ng-options="option for option in states " ng-model="addBorrower.state "></select>
+    						</div>
+						</div>
+
+						<div class="col-sm-6 ">
+							<div class="form-group ">
+        						<label>Last Name</label>
+        						<input type="text " class="form-control " ng-model="addBorrower.lastName ">
+    						</div>
+    						<div class="form-group ">
+        						<label>Phone</label>
+        						<div>
+        							(<input class="small-width "  type="text" pattern="^\d{3,3}" title="Must contain 3 digits only" ng-model="addBorrower.phone1 ">)  
+        							<input type="text" pattern="^\d{3,3}" title="Must contain 3 digits only" class="small-width" ng-model="addBorrower.phone2 "> -
+        							<input class="small-width" type="text" pattern="^\d{4,4}" title="Must contain 4 digits only" ng-model="addBorrower.phone3 ">
+        						</div>
+    						</div>
+    						<div class="form-group ">
+        						<label>City</label>
+        						<input type="text " class="form-control " ng-model="addBorrower.city ">
+    						</div>
+    				   		<div class="form-group ">
+        						<label></label>
+        						<button ng-disabled="!enableAdd" class="btn btn-info add-borrower" ng-click="borrowerForm.$valid && add_borrower()">Add</button>
+    						</div>
+						</div>
+					</form>
+					<div class="row text-center">
+						<div class="text-danger" ng-if="error"> {{error}}</div>
+						<div class="text-success" ng-if="success"> {{success}}</div>
+					</div>
+                </div>
+            </uib-accordion>
+        </div>
+        <div class="col-sm-4 "></div>
+    </div>
+    <div class="row borrower-table " ng-show="borrowers.length > 0 &&!status.open">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th style="min-width: 70px;">Card Id</th>
+                        <th style="min-width: 150px;">Name</th>
+                        <th style="min-width: 100px;">SSN</th>
+                        <th>Address</th>
+                        <th style="min-width: 115px;">Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="borrower in borrowersPerPage track by borrower.Card_id">
+                        <td>{{borrower.Card_id}}</td>
+                        <td>{{borrower.Bname}}</td>
+                        <td>{{borrower.SSN}}</td>
+                        <td>{{borrower.Address}}</td>
+                        <td>{{borrower.Phone}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pages">
+                <ul uib-pagination total-items="totalItems" max-size="5" ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="true"></ul>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="no-results" ng-show="borrowers.length == 0 && !status.open">
+        <h4>No borrower record found</h4>
+    </div>
+</div>

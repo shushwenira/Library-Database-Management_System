@@ -1,0 +1,47 @@
+<div class="books container-fluid">
+	<div class="row search-bar" ng-class="{top:searched,middle:!searched}">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="input-group search-group">
+            <input type="text" class="form-control search-input" ng-keydown="$event.keyCode === 13 && search(searchString)" ng-model="searchString" placeholder="Search for a book by its Title, ISBN or Author Name">
+            <span class="input-group-btn">
+        		<button class="btn btn-info search-btn" ng-click="search(searchString)" type="button">Search</button>
+      		</span>
+        </div>
+    </div>
+    <div class="col-sm-3"></div>
+	</div>
+	<div class="row search-table" ng-show="books.length > 0" >
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th style="min-width: 100px;">ISBN</th>
+						<th>Title</th>
+						<th>Author(s)</th>
+						<th style="min-width: 115px;">Available</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="book in booksPerPage track by book.ISBN">
+						<td>{{book.ISBN}}</td>
+						<td>{{book.Title}}</td>
+						<td>{{book.Name}}</td>
+						<td ng-show="book.availability == 'Yes' ">Yes: <a class="anchors" ng-click="checkout(book)">Check-out</a></td>
+						<td ng-show="book.availability == 'No' ">No</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pages">
+				<ul uib-pagination total-items="totalItems" max-size="5"  ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="false"></ul>
+			</div>
+			
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+	<div class="no-results" ng-show="books.length == 0 && searched">
+		<h4>No Results Found</h4> 
+	</div>
+</div>
+

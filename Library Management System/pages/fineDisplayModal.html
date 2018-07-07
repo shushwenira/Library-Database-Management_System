@@ -1,0 +1,35 @@
+<div class="finesModal">
+    <div class="modal-header">
+        <h3 class="modal-title">Fine Payment Information for Card Id: {{card_id}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <table class="table table-bordered table-striped text-center">
+                    <tr>
+                        <th>ISBN</th>
+                        <th>Due Date</th>
+                        <th>Check-in Date</th>
+                        <th>Fine Amount ($)</th>
+                        <th>Fine Payment</th>
+                    </tr>
+                    <tr ng-repeat="loan in loans">
+                        <td>{{loan.ISBN}}</td>
+                        <td>{{loan.Date_due}}</td>
+                        <td>{{loan.Date_in}}</td>
+                        <td>{{loan.Fine_amount}}</td>
+                        <td ng-show="loan.Paid">Paid</td>
+                        <td ng-hide="loan.Paid">Unpaid: <a class="anchors" ng-click="makePayment(loan.Loan_id)">Make Payment</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="messages">
+            <span class="text-danger" ng-if="error">{{error}}</span>
+            <span class="text-success" ng-if="success">{{success}}</span>
+        </div>
+        <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

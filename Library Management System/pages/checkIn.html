@@ -1,0 +1,62 @@
+<div class="checkin container-fluid">
+	<div class="row search-bar" ng-class="{top:searched,middle:!searched}">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="input-group search-group">
+            <input type="text" ng-keydown="$event.keyCode === 13 && checkInSearch(searchString,true)" class="form-control search-input" ng-model="searchString" placeholder="Search for a book to check-in by ISBN, Borrower's Card Id or Borrower's Name ">
+            <span class="input-group-btn">
+        		<button class="btn btn-info search-btn" ng-click="checkInSearch(searchString,true)" type="button">Search</button>
+      		</span>
+        </div>
+    </div>
+    <div class="col-sm-3"></div>
+	</div>
+	<div class="row search-table" ng-show="loans.length > 0" >
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<table class="table table-bordered table-striped text-center">
+				<thead>
+					<tr>
+						<th>Select</th>
+						<th>ISBN</th>
+						<th>Card Id</th>
+						<th>Borrower</th>
+						<th>Due Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="loan in loansPerPage track by loan.Loan_id">
+						<td ng-init="loan.isSelected=false"><input type="checkbox" ng-model="loan.isSelected" ng-change="EnableDisableCheckIn()"></td>
+						<td>{{loan.ISBN}}</td>
+						<td>{{loan.Card_id}}</td>
+						<td>{{loan.Bname}}</td>
+						<td>{{loan.Date_due}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pages">
+				<ul uib-pagination total-items="totalItems" max-size="5"  ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="false"></ul>
+			</div>
+		</div>
+		<div class="col-sm-3"></div>
+	</div>
+	<div class="row" ng-if="error || success">
+		<div class="text-center">
+			<div class="text-danger" ng-if="error">{{error}}</div>
+			<div class="text-success" ng-if="success">{{success}}</div>
+		</div>
+	</div>
+	<div class="row" ng-show="loans.length > 0">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4 text-center">
+			<button class="btn btn-primary checkIn-btn" ng-disabled="!selected" ng-click="checkIn()">Check-In</button>
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+	
+	
+	<div class="no-results" ng-show="loans.length == 0 && searched">
+		<h4>No Results Found</h4> 
+	</div>
+</div>
+
