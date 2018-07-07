@@ -8,22 +8,22 @@ and run the Library Management System application.
 2. Install MySQL and configure its username, password and port (MySQL installer: https://dev.mysql.com/downloads/installer/)
 3. Open command promt/shell
 4. Navigate to Library Management System/ 
-	a. Run following command: This will install all the dependencies (listed at the end of the guide) of the application 
+	- Run following command: This will install all the dependencies (listed at the end of the guide) of the application 
 	   into Library Management System/node_modules/ 
 		- npm install
 
 5. Navigate to Library Management System/DB Initialization/ 
-	a. Run following command to parse the CSV's in this folder and populate tables of the DB.
+	- Run following command to parse the CSV's in this folder and populate tables of the DB.
 	   It takes hostname, MySQL port(3306 is default), MySQL username, MySQL password and your preferred database name as the arguments to connect
 	   to MySQL and create a database. (Note that the database name provided, is a NEW database that is to be created)
 		- node build_script.js 'localhost' '3306' 'root' 'root' 'library'
 	   
 6. Navigate to Library Management System/ 
-	a.  Run following command to start the application
+	-  Run following command to start the application
 		- node server.js 'localhost' '3306' 'root' 'root' 'library'
 
 7. Hit the following URL in your browser to see the application running
-		- http://localhost:3000/
+	- http://localhost:3000/
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 
