@@ -4,25 +4,25 @@
 Following is the step by step guide to install required softwares, parse both the CSV's in to corresponding tables (DB initialization) 
 and run the Library Management System application. 
 
-1. Install Node.Js (https://nodejs.org/en/download/)
-2. Install MySQL and configure its username, password and port (MySQL installer: https://dev.mysql.com/downloads/installer/)
-3. Open command promt/shell
-4. Navigate to Library Management System/ 
+- Install Node.Js (https://nodejs.org/en/download/)
+- Install MySQL and configure its username, password and port (MySQL installer: https://dev.mysql.com/downloads/installer/)
+- Open command promt/shell
+- Navigate to Library Management System/ 
 	- Run following command: This will install all the dependencies (listed at the end of the guide) of the application 
 	   into Library Management System/node_modules/ 
 		- npm install
 
-5. Navigate to Library Management System/DB Initialization/ 
+- Navigate to Library Management System/DB Initialization/ 
 	- Run following command to parse the CSV's in this folder and populate tables of the DB.
 	   It takes hostname, MySQL port(3306 is default), MySQL username, MySQL password and your preferred database name as the arguments to connect
 	   to MySQL and create a database. (Note that the database name provided, is a NEW database that is to be created)
 		- node build_script.js 'localhost' '3306' 'root' 'root' 'library'
 	   
-6. Navigate to Library Management System/ 
+- Navigate to Library Management System/ 
 	-  Run following command to start the application
 		- node server.js 'localhost' '3306' 'root' 'root' 'library'
 
-7. Hit the following URL in your browser to see the application running
+- Hit the following URL in your browser to see the application running
 	- http://localhost:3000/
 
 ---------------------------------------------------------------------------------------------------------------------------------------
